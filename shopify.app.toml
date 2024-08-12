@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "002334f5b46c86e809467c64b2a9d85f"
+name = "test sms sms\\"
+handle = "test-sms-sms"
+application_url = "https://internationally-constitution-culture-south.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "ozone-test-shop.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_orders,write_orders,write_products"
+
+[auth]
+redirect_urls = [
+  "https://internationally-constitution-culture-south.trycloudflare.com/auth/callback",
+  "https://internationally-constitution-culture-south.trycloudflare.com/auth/shopify/callback",
+  "https://internationally-constitution-culture-south.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
+
+[pos]
+embedded = false

@@ -1,0 +1,37 @@
+# fly.toml app configuration file generated for beneficial-business-app on 2024-06-29T13:08:07+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'beneficial-business-app'
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  SCOPES = "read_orders,write_orders,write_products,read_customers"
+  SHOPIFY_API_KEY = "e2eb8a55a773550180dcd2e27e241670"
+  SHOPIFY_API_SECRET = "ac7e4ec106abc09aceaf33849e87184d"
+  SHOPIFY_APP_URL = "https://beneficial-business-app.fly.dev"
+
+  
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+
+
+
+
+

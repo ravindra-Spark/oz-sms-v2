@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=your-database-url
+      - SHOPIFY_APP_URL=http://localhost:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: .
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=3001
+      - VITE_BACKEND_URL=http://localhost:3000
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: your-database
+    ports:
+      - "5432:5432"
