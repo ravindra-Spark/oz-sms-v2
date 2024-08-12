@@ -53,7 +53,7 @@ export default function SettingPage() {
     useEffect(() => {
         async function fetchSettings() {
             try {
-                const response = await fetch('https://shopifyv1.ozonesender.com//api/settings');
+                const response = await fetch('https://shopifyv1.ozonesender.com/api/settings');
                 if (response.ok) {
                     const data = await response.json();
                     setFormState(data);
